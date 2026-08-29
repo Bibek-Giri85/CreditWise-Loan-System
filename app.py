@@ -16,7 +16,7 @@ st.set_page_config(
 
 
 # =========================================================
-# PREMIUM HIGH-CONTRAST LIGHT FINTECH UI (CLEAN LIGHT INPUTS)
+# MODERN SAAS THEME ENGINE: DUAL LIGHT & DARK MODE
 # =========================================================
 
 st.markdown(
@@ -24,29 +24,247 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
-    /* Global Page Styling & Theme Variables Override */
-    :root,
+    /* =====================================================
+       CSS DESIGN TOKENS (LIGHT DEFAULT & SAAS DARK MODE)
+       ===================================================== */
+    :root {
+        /* Light Mode Tokens - Crisp, high-contrast, perfectly visible boxes */
+        --app-bg: #f1f5f9;
+        --app-bg-mesh: radial-gradient(at 10% 10%, #e2e8f0 0px, transparent 50%), radial-gradient(at 90% 90%, #e0f2fe 0px, transparent 50%);
+        --app-card-bg: #ffffff;
+        --app-card-border: #cbd5e1;
+        --app-card-border-hover: #94a3b8;
+        --app-card-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+        
+        --app-text-title: #0f172a;
+        --app-text-body: #1e293b;
+        --app-text-muted: #475569;
+        --app-text-subtle: #64748b;
+        
+        --input-bg: #ffffff;
+        --input-border: #cbd5e1;
+        --input-border-hover: #64748b;
+        --input-text: #0f172a;
+        --input-placeholder: #64748b;
+        --input-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --input-focus-ring: rgba(37, 99, 235, 0.22);
+        
+        --stepper-bg: #f8fafc;
+        --stepper-border: #cbd5e1;
+        --stepper-text: #334155;
+        --stepper-hover-bg: #e2e8f0;
+        --stepper-group-bg: #f1f5f9;
+        
+        --btn-primary-bg: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+        --btn-primary-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        --btn-primary-hover-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        
+        --btn-secondary-bg: #ffffff;
+        --btn-secondary-border: #cbd5e1;
+        --btn-secondary-text: #1e293b;
+        --btn-secondary-hover-bg: #f8fafc;
+        --btn-secondary-hover-border: #2563eb;
+        --btn-secondary-hover-text: #1d4ed8;
+        
+        --range-tag-bg: #e0f2fe;
+        --range-tag-border: #bae6fd;
+        --range-tag-text: #0369a1;
+        
+        --notice-bg: #fffbeb;
+        --notice-border: #fcd34d;
+        --notice-accent: #f59e0b;
+        --notice-text: #78350f;
+        --notice-strong: #92400e;
+        
+        --sub-box-bg: #f8fafc;
+        --sub-box-border: #cbd5e1;
+        
+        --metric-card-bg: #f8fafc;
+        --metric-card-border: #cbd5e1;
+        
+        --table-th-bg: #f1f5f9;
+        --table-th-text: #1e293b;
+        --table-td-bg: #ffffff;
+        --table-td-alt: #f8fafc;
+        --table-border: #cbd5e1;
+        
+        --badge-approved-bg: #dcfce7;
+        --badge-approved-border: #86efac;
+        --badge-approved-text: #15803d;
+        
+        --badge-rejected-bg: #fee2e2;
+        --badge-rejected-border: #fca5a5;
+        --badge-rejected-text: #b91c1c;
+        
+        --badge-ready-bg: #e2e8f0;
+        --badge-ready-border: #cbd5e1;
+        --badge-ready-text: #334155;
+    }
+
+    /* Modern SaaS Dark Mode Palette */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --app-bg: #090d16;
+            --app-bg-mesh: radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.12) 0px, transparent 50%), radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 60%);
+            --app-card-bg: #0f172a;
+            --app-card-border: #1e293b;
+            --app-card-border-hover: #334155;
+            --app-card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+            
+            --app-text-title: #f8fafc;
+            --app-text-body: #e2e8f0;
+            --app-text-muted: #94a3b8;
+            --app-text-subtle: #64748b;
+            
+            --input-bg: #090d16;
+            --input-border: #1e293b;
+            --input-border-hover: #3b82f6;
+            --input-text: #f8fafc;
+            --input-placeholder: #64748b;
+            --input-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            --input-focus-ring: rgba(59, 130, 246, 0.35);
+            
+            --stepper-bg: #141e33;
+            --stepper-border: #22324e;
+            --stepper-text: #cbd5e1;
+            --stepper-hover-bg: #1e2d4a;
+            --stepper-group-bg: #0b1120;
+            
+            --btn-primary-bg: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+            --btn-primary-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+            --btn-primary-hover-shadow: 0 6px 22px rgba(59, 130, 246, 0.55);
+            
+            --btn-secondary-bg: #131d31;
+            --btn-secondary-border: #22324e;
+            --btn-secondary-text: #93c5fd;
+            --btn-secondary-hover-bg: #1a2742;
+            --btn-secondary-hover-border: #3b82f6;
+            --btn-secondary-hover-text: #bfdbfe;
+            
+            --range-tag-bg: #111d33;
+            --range-tag-border: #1e355b;
+            --range-tag-text: #93c5fd;
+            
+            --notice-bg: #1f1404;
+            --notice-border: #78350f;
+            --notice-accent: #f59e0b;
+            --notice-text: #fef08a;
+            --notice-strong: #fde047;
+            
+            --sub-box-bg: #0b1120;
+            --sub-box-border: #1e293b;
+            
+            --metric-card-bg: #131d31;
+            --metric-card-border: #1e293b;
+            
+            --table-th-bg: #0b1120;
+            --table-th-text: #cbd5e1;
+            --table-td-bg: #0f172a;
+            --table-td-alt: #0b1120;
+            --table-border: #1e293b;
+            
+            --badge-approved-bg: #052e16;
+            --badge-approved-border: #15803d;
+            --badge-approved-text: #86efac;
+            
+            --badge-rejected-bg: #450a0a;
+            --badge-rejected-border: #991b1b;
+            --badge-rejected-text: #fca5a5;
+            
+            --badge-ready-bg: #131d31;
+            --badge-ready-border: #22324e;
+            --badge-ready-text: #94a3b8;
+        }
+    }
+
+    [data-theme="dark"] {
+        --app-bg: #090d16 !important;
+        --app-bg-mesh: radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.12) 0px, transparent 50%), radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 60%) !important;
+        --app-card-bg: #0f172a !important;
+        --app-card-border: #1e293b !important;
+        --app-card-border-hover: #334155 !important;
+        --app-card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 2px 6px -2px rgba(0, 0, 0, 0.4) !important;
+        
+        --app-text-title: #f8fafc !important;
+        --app-text-body: #e2e8f0 !important;
+        --app-text-muted: #94a3b8 !important;
+        --app-text-subtle: #64748b !important;
+        
+        --input-bg: #090d16 !important;
+        --input-border: #1e293b !important;
+        --input-border-hover: #3b82f6 !important;
+        --input-text: #f8fafc !important;
+        --input-placeholder: #64748b !important;
+        --input-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+        --input-focus-ring: rgba(59, 130, 246, 0.35) !important;
+        
+        --stepper-bg: #141e33 !important;
+        --stepper-border: #22324e !important;
+        --stepper-text: #cbd5e1 !important;
+        --stepper-hover-bg: #1e2d4a !important;
+        --stepper-group-bg: #0b1120 !important;
+        
+        --btn-primary-bg: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%) !important;
+        --btn-primary-shadow: 0 4px 16px rgba(37, 99, 235, 0.4) !important;
+        --btn-primary-hover-shadow: 0 6px 22px rgba(59, 130, 246, 0.55) !important;
+        
+        --btn-secondary-bg: #131d31 !important;
+        --btn-secondary-border: #22324e !important;
+        --btn-secondary-text: #93c5fd !important;
+        --btn-secondary-hover-bg: #1a2742 !important;
+        --btn-secondary-hover-border: #3b82f6 !important;
+        --btn-secondary-hover-text: #bfdbfe !important;
+        
+        --range-tag-bg: #111d33 !important;
+        --range-tag-border: #1e355b !important;
+        --range-tag-text: #93c5fd !important;
+        
+        --notice-bg: #1f1404 !important;
+        --notice-border: #78350f !important;
+        --notice-accent: #f59e0b !important;
+        --notice-text: #fef08a !important;
+        --notice-strong: #fde047 !important;
+        
+        --sub-box-bg: #0b1120 !important;
+        --sub-box-border: #1e293b !important;
+        
+        --metric-card-bg: #131d31 !important;
+        --metric-card-border: #1e293b !important;
+        
+        --table-th-bg: #0b1120 !important;
+        --table-th-text: #cbd5e1 !important;
+        --table-td-bg: #0f172a !important;
+        --table-td-alt: #0b1120 !important;
+        --table-border: #1e293b !important;
+        
+        --badge-approved-bg: #052e16 !important;
+        --badge-approved-border: #15803d !important;
+        --badge-approved-text: #86efac !important;
+        
+        --badge-rejected-bg: #450a0a !important;
+        --badge-rejected-border: #991b1b !important;
+        --badge-rejected-text: #fca5a5 !important;
+        
+        --badge-ready-bg: #131d31 !important;
+        --badge-ready-border: #22324e !important;
+        --badge-ready-text: #94a3b8 !important;
+    }
+
+    /* Global Body Canvas with Mesh Background */
     html,
     body,
     [data-testid="stAppViewContainer"],
     [data-testid="stApp"],
-    .stApp,
-    [data-theme="dark"],
-    [data-theme="light"],
-    div[data-baseweb="popover"],
-    div[data-baseweb="menu"],
-    div[data-baseweb="select"],
-    div[data-baseweb="input"] {
+    .stApp {
         font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        background-color: #f3f6fb !important;
-        color: #0f172a !important;
-        --background-color: #f3f6fb !important;
-        --secondary-background-color: #eef4fc !important;
-        --text-color: #0f172a !important;
-        --primary-color: #2563eb !important;
+        background-color: var(--app-bg) !important;
+        background-image: var(--app-bg-mesh) !important;
+        background-attachment: fixed !important;
+        color: var(--app-text-body) !important;
+        transition: background-color 0.25s ease, color 0.25s ease !important;
     }
 
-    /* Streamlit Defaults */
+    /* Streamlit Default Resets */
     header[data-testid="stHeader"] {
         background: transparent !important;
         height: 1.5rem !important;
@@ -58,41 +276,41 @@ st.markdown(
         display: none !important;
     }
 
-    /* Block Container */
+    /* Main Container Padding */
     .block-container {
         max-width: 1450px !important;
-        padding-top: 0.5rem !important;
-        padding-bottom: 1rem !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 1.5rem !important;
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
         margin: 0 auto !important;
     }
 
     /* =====================================================
-       STYLISH APP HEADER & BRANDING
+       APP BRANDING & HEADER
        ===================================================== */
     .top-header-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.45rem;
     }
     .app-brand-container {
         display: flex;
         align-items: center;
-        gap: 0.65rem;
+        gap: 0.75rem;
     }
     .app-logo-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border: 1.5px solid #bfdbfe;
-        border-radius: 10px;
-        box-shadow: 0 3px 8px rgba(37, 99, 235, 0.12);
-        font-size: 1.3rem;
+        width: 42px;
+        height: 42px;
+        background: var(--btn-secondary-bg);
+        border: 1.5px solid var(--btn-secondary-border);
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(37, 99, 235, 0.12);
+        font-size: 1.35rem;
         flex-shrink: 0;
     }
     .app-brand-text-col {
@@ -103,44 +321,43 @@ st.markdown(
         padding: 0 !important;
     }
     .app-brand-title {
-        font-size: 1.45rem;
+        font-size: 1.5rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #0b1f3a 0%, #1e40af 50%, #2563eb 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         letter-spacing: -0.03em;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1.05 !important;
+        color: var(--app-text-title) !important;
+        -webkit-text-fill-color: initial !important;
     }
     .app-brand-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.76rem;
         font-weight: 600;
-        color: #486581;
+        color: var(--app-text-muted) !important;
         letter-spacing: 0.01em;
         margin: 0 !important;
-        margin-top: 1px !important;
+        margin-top: 2px !important;
         padding: 0 !important;
         line-height: 1.1 !important;
     }
 
     /* =====================================================
-       HIGHLIGHTED IMPORTANT NOTICE SECTION
+       IMPORTANT NOTICE BANNER
        ===================================================== */
     .highlighted-notice-bar {
-        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 45%, #fff7ed 100%);
-        border: 1.5px solid #fcd34d;
-        border-left: 5px solid #f59e0b;
+        background: var(--notice-bg);
+        border: 1.5px solid var(--notice-border);
+        border-left: 5px solid var(--notice-accent);
         border-radius: 10px;
-        padding: 0.6rem 1rem;
-        font-size: 0.77rem;
-        color: #78350f;
-        line-height: 1.42;
-        margin-bottom: 0.85rem;
+        padding: 0.65rem 1.1rem;
+        font-size: 0.78rem;
+        color: var(--notice-text) !important;
+        line-height: 1.45;
+        margin-bottom: 0.95rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        box-shadow: 0 3px 10px rgba(245, 158, 11, 0.12), 0 1px 2px rgba(245, 158, 11, 0.06);
+        gap: 0.85rem;
+        box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
     }
     .notice-badge-pill {
         display: inline-flex;
@@ -153,7 +370,7 @@ st.markdown(
         font-weight: 800;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        padding: 0.22rem 0.6rem;
+        padding: 0.24rem 0.65rem;
         border-radius: 6px;
         white-space: nowrap;
         box-shadow: 0 1px 3px rgba(180, 83, 9, 0.25);
@@ -162,57 +379,106 @@ st.markdown(
     .notice-text-content {
         flex: 1;
         font-weight: 500;
+        color: var(--notice-text) !important;
     }
     .notice-text-content strong {
-        color: #92400e;
+        color: var(--notice-strong) !important;
         font-weight: 700;
     }
 
-    /* Cards / Containers */
+    /* =====================================================
+       MAIN CARDS / CONTAINERS (CLEARLY VISIBLE BOXES)
+       ===================================================== */
     div[data-testid="stVerticalBlockBorderWrapper"] {
-        background: #ffffff !important;
-        border: 1px solid #dbe4f0 !important;
-        border-radius: 12px !important;
-        box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03) !important;
-        padding: 1rem 1.15rem !important;
+        background: var(--app-card-bg) !important;
+        border: 1.5px solid var(--app-card-border) !important;
+        border-radius: 14px !important;
+        box-shadow: var(--app-card-shadow) !important;
+        padding: 1.15rem 1.25rem !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }
 
-    /* Form Section Header */
+    /* Section Headlines */
     .section-headline {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #0f294d;
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: var(--app-text-title) !important;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.04em;
         margin-top: 0;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.85rem;
         display: flex;
         align-items: center;
-        gap: 0.35rem;
+        gap: 0.4rem;
     }
     .section-headline.loan-info {
-        margin-top: 0.95rem;
-        padding-top: 0.75rem;
-        border-top: 1px dashed #e2e8f0;
+        margin-top: 1.05rem;
+        padding-top: 0.85rem;
+        border-top: 1px dashed var(--app-card-border);
     }
 
-    /* Field Label Text (Directly Above Input Box - Very Close) */
+    /* Field Labels & Range Indicators */
+    .field-label-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        margin-bottom: 3px !important;
+        width: 100% !important;
+    }
+
     .field-label-text {
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
-        font-size: 0.78rem;
+        color: var(--app-text-title) !important;
+        -webkit-text-fill-color: var(--app-text-title) !important;
+        font-size: 0.79rem;
         font-weight: 700;
         letter-spacing: -0.01em;
         line-height: 1.2;
-        margin-bottom: 2px !important;
-        display: block;
+        margin-bottom: 0px !important;
+        display: inline-block;
     }
 
-    /* Field Range Indicator (Directly Below Input Box - Right Corner & Hugging Box Closely) */
+    /* Modern SaaS Micro-Alert beside entering value */
+    .saas-micro-alert {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        font-size: 0.67rem !important;
+        font-weight: 800 !important;
+        padding: 1.5px 6px !important;
+        border-radius: 5px !important;
+        background: #fef2f2 !important;
+        color: #dc2626 !important;
+        border: 1px solid #fca5a5 !important;
+        box-shadow: 0 1px 3px rgba(220, 38, 38, 0.12) !important;
+        line-height: 1.15 !important;
+        white-space: nowrap !important;
+        animation: saasAlertPop 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    @keyframes saasAlertPop {
+        0% { transform: scale(0.92); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .saas-micro-alert {
+            background: #450a0a !important;
+            color: #fca5a5 !important;
+            border: 1px solid #991b1b !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+        }
+    }
+    [data-theme="dark"] .saas-micro-alert {
+        background: #450a0a !important;
+        color: #fca5a5 !important;
+        border: 1px solid #991b1b !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+
     .field-range-below {
-        font-size: 0.67rem;
+        font-size: 0.68rem;
         font-weight: 600;
-        color: #475569;
+        color: var(--app-text-muted) !important;
         margin-top: -6px !important;
         margin-bottom: 0.35rem !important;
         display: flex !important;
@@ -224,242 +490,184 @@ st.markdown(
         width: 100% !important;
     }
     .field-range-below .range-badge-tag {
-        background: #e0ecfb;
-        color: #1e3a8a;
-        border: 1px solid #bfdbfe;
+        background: var(--range-tag-bg);
+        color: var(--range-tag-text);
+        border: 1px solid var(--range-tag-border);
         font-weight: 700;
-        padding: 0.03rem 0.32rem;
+        padding: 0.03rem 0.35rem;
         border-radius: 4px;
         font-size: 0.60rem;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         flex-shrink: 0;
     }
+    .field-range-below .range-badge-tag.error-tag {
+        background: #fee2e2 !important;
+        color: #b91c1c !important;
+        border: 1px solid #fca5a5 !important;
+        font-weight: 800 !important;
+    }
+    .field-range-below .range-error-text {
+        color: #dc2626 !important;
+        font-weight: 700 !important;
+    }
 
-    /* Tighten Streamlit element containers between label, input and range */
-    div[data-testid="element-container"]:has(.field-label-text) {
-        margin-bottom: -12px !important;
+    @media (prefers-color-scheme: dark) {
+        .field-range-below .range-badge-tag.error-tag {
+            background: #450a0a !important;
+            color: #fca5a5 !important;
+            border: 1px solid #991b1b !important;
+        }
+        .field-range-below .range-error-text {
+            color: #f87171 !important;
+        }
+    }
+    [data-theme="dark"] .field-range-below .range-badge-tag.error-tag {
+        background: #450a0a !important;
+        color: #fca5a5 !important;
+        border: 1px solid #991b1b !important;
+    }
+    [data-theme="dark"] .field-range-below .range-error-text {
+        color: #f87171 !important;
+    }
+
+    /* Tighten widget spacing without breaking layout or causing overlaps */
+    div[data-testid="element-container"]:has(.field-label-text),
+    div[data-testid="element-container"]:has(.field-label-row) {
+        margin-bottom: 2px !important;
         padding-bottom: 0px !important;
     }
     div[data-testid="element-container"]:has(div[data-testid="stNumberInput"]),
     div[data-testid="element-container"]:has(div[data-testid="stTextInput"]),
     div[data-testid="element-container"]:has(div[data-testid="stSelectbox"]) {
         margin-top: 0px !important;
-        margin-bottom: -8px !important;
+        margin-bottom: 2px !important;
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
     div[data-testid="element-container"]:has(.field-range-below) {
-        margin-top: -4px !important;
-        margin-bottom: 0.15rem !important;
+        margin-top: 2px !important;
+        margin-bottom: 0.35rem !important;
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
 
-    /* Widget Spacing & Outer Resets */
+    /* Completely hide any internal/collapsed Streamlit widget labels to prevent overlapping */
+    label[data-testid="stWidgetLabel"],
+    div[data-testid="stWidgetLabel"],
+    div[data-testid="stSelectbox"] label,
+    div[data-testid="stNumberInput"] label,
+    div[data-testid="stTextInput"] label {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
+        min-height: 0px !important;
+        max-height: 0px !important;
+        width: 0px !important;
+        min-width: 0px !important;
+        max-width: 0px !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        clip: rect(0, 0, 0, 0) !important;
+        opacity: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* =====================================================
+       INPUTS & CONTROLS (NUMBER INPUTS)
+       ===================================================== */
     div[data-testid="stNumberInput"],
-    div[data-testid="stTextInput"],
-    div[data-testid="stSelectbox"] {
+    div[data-testid="stTextInput"] {
         margin-top: 0px !important;
         margin-bottom: 0px !important;
         padding-top: 0px !important;
         padding-bottom: 0px !important;
-        height: auto !important;
-        min-height: auto !important;
         background: transparent !important;
         background-color: transparent !important;
         border: none !important;
     }
 
-    /* =====================================================
-       COMPREHENSIVE LIGHT FINTECH SELECTBOX & INPUT STYLING
-       (CLEAN WHITE BOXES, LIGHT STEPPERS, CRISP CHEVRONS)
-       ===================================================== */
-    /* 1. All BaseWeb & Streamlit input controls */
     div[data-testid="stNumberInputContainer"],
     div[data-testid="stNumberInput"] div[data-baseweb="input"],
-    div[data-testid="stNumberInputContainer"] > div,
-    div[data-testid="stTextInput"] div[data-baseweb="input"],
-    div[data-testid="stTextInputContainer"] > div {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-        border: 1.5px solid #cbd5e1 !important;
+    div[data-testid="stTextInput"] div[data-baseweb="input"] {
+        background: var(--input-bg) !important;
+        background-color: var(--input-bg) !important;
+        border: 1.5px solid var(--input-border) !important;
         border-radius: 8px !important;
         min-height: 40px !important;
         height: 40px !important;
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+        color: var(--input-text) !important;
+        -webkit-text-fill-color: var(--input-text) !important;
+        box-shadow: var(--input-shadow) !important;
         transition: all 0.15s ease-in-out !important;
         overflow: hidden !important;
     }
 
-    /* 2. Selectbox Root & Outer Wrapper */
-    div[data-testid="stSelectbox"],
-    div[data-testid="stSelectbox"] > div {
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
+    div[data-testid="stNumberInputContainer"]:hover,
+    div[data-testid="stNumberInput"] div[data-baseweb="input"]:hover,
+    div[data-testid="stTextInput"] div[data-baseweb="input"]:hover {
+        border-color: var(--input-border-hover) !important;
     }
 
-    /* 3. The Selectbox Input Box (Visible Control) - Pristine White Box with Clean Border */
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
-    div[data-testid="stSelectbox"] [data-baseweb="select"] > div {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-        border: 1.5px solid #cbd5e1 !important;
-        border-radius: 8px !important;
-        min-height: 40px !important;
-        height: 40px !important;
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        cursor: pointer !important;
-        transition: all 0.15s ease-in-out !important;
+    div[data-testid="stNumberInputContainer"]:focus-within,
+    div[data-testid="stNumberInput"] div[data-baseweb="input"]:focus-within,
+    div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
+        border-color: #2563eb !important;
+        box-shadow: 0 0 0 3px var(--input-focus-ring) !important;
     }
 
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
-    div[data-testid="stSelectbox"] [data-baseweb="select"] > div:hover {
-        border-color: #94a3b8 !important;
-        background-color: #ffffff !important;
-        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06) !important;
-    }
-
-    /* 4. Selectbox Inner elements transparency (preventing black backgrounds inside) */
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div,
-    div[data-testid="stSelectbox"] [data-baseweb="select"] > div > div,
-    div[data-testid="stSelectbox"] [data-baseweb="icon"],
-    div[data-testid="stSelectbox"] [role="button"] {
-        background: transparent !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-    }
-
-    /* 5. Typography and Values inside Selectboxes & Inputs */
     input,
     input[type="number"],
     input[type="text"],
     div[data-testid="stNumberInput"] input,
-    div[data-testid="stTextInput"] input,
-    div[data-testid="stSelectbox"] input,
-    div[data-testid="stSelectbox"] span,
-    div[data-testid="stSelectbox"] p,
-    div[data-testid="stSelectbox"] div {
+    div[data-testid="stTextInput"] input {
         font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
-        font-size: 0.84rem !important;
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
+        font-size: 0.85rem !important;
+        color: var(--input-text) !important;
+        -webkit-text-fill-color: var(--input-text) !important;
         font-weight: 600 !important;
-    }
-
-    input {
-        padding: 4px 8px !important;
+        padding: 4px 10px !important;
         border: none !important;
         background: transparent !important;
     }
 
-    /* 6. Placeholders */
     input::placeholder,
-    input::-webkit-input-placeholder,
-    input::-moz-placeholder,
-    input:-ms-input-placeholder,
-    div[data-testid="stNumberInput"] input::placeholder,
-    div[data-testid="stTextInput"] input::placeholder,
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-hidden="true"],
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] span:empty,
-    div[data-testid="stSelectbox"] [data-testid="stSelectboxPlaceholder"],
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] [data-baseweb="placeholder"] {
-        color: #64748b !important;
-        -webkit-text-fill-color: #64748b !important;
+    input::-webkit-input-placeholder {
+        color: var(--input-placeholder) !important;
+        -webkit-text-fill-color: var(--input-placeholder) !important;
         font-size: 0.82rem !important;
         font-weight: 500 !important;
         opacity: 1 !important;
     }
 
-    /* 7. Dropdown Arrow - Clean Downward Chevron (Opposite of ^) */
-    div[data-testid="stSelectbox"] svg,
-    div[data-baseweb="select"] svg,
-    div[data-testid="stSelectbox"] [data-baseweb="icon"] svg {
-        fill: #475569 !important;
-        color: #475569 !important;
-        width: 16px !important;
-        height: 16px !important;
-        min-width: 16px !important;
-        min-height: 16px !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        display: block !important;
-    }
-    div[data-testid="stSelectbox"] svg path,
-    div[data-baseweb="select"] svg path,
-    div[data-testid="stSelectbox"] [data-baseweb="icon"] svg path {
-        fill: #475569 !important;
-        color: #475569 !important;
-    }
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover svg {
-        fill: #0f294d !important;
-        color: #0f294d !important;
-    }
-
-    /* 8. STEPPER (+ / -) BUTTONS - PERFECTLY CENTERED, EQUALLY FITTED & BALANCED */
-    div[data-testid="stNumberInputContainer"] div[data-baseweb="input"] > div:last-child,
-    div[data-testid="stNumberInput"] div[data-baseweb="input"] > div:last-child,
+    /* STEPPER (+ / -) CONTROLS */
     div[data-testid="stNumberInputContainer"] [role="group"],
-    div[data-testid="stNumberInput"] [role="group"] {
-        background: #f8fafc !important;
-        background-color: #f8fafc !important;
-        border-left: 1px solid #e2e8f0 !important;
-        border-top: none !important;
-        border-bottom: none !important;
-        border-right: none !important;
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 0 6px !important;
-        gap: 4px !important;
-        height: 100% !important;
-        min-height: 100% !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-    }
-
+    div[data-testid="stNumberInput"] [role="group"],
     div[data-testid="stNumberInputStepDown"],
     div[data-testid="stNumberInputStepUp"] {
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        background: var(--stepper-group-bg) !important;
+        background-color: var(--stepper-group-bg) !important;
+        border-left: 1.5px solid var(--input-border) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        height: auto !important;
-        width: auto !important;
+        padding: 0 4px !important;
+        gap: 3px !important;
+        height: 100% !important;
     }
 
     button[data-testid="stNumberInputStepDown"],
     button[data-testid="stNumberInputStepUp"],
     div[data-testid="stNumberInputStepDown"] button,
     div[data-testid="stNumberInputStepUp"] button,
-    div[data-testid="stNumberInputContainer"] button,
-    div[data-testid="stNumberInput"] button,
-    div[data-testid="stNumberInputContainer"] [role="group"] button,
-    div[data-testid="stNumberInput"] [role="group"] button,
-    div[data-testid="stNumberInputContainer"] div[data-baseweb="input"] button {
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-        border: 1px solid #cbd5e1 !important;
-        color: #334155 !important;
-        -webkit-text-fill-color: #334155 !important;
+    div[data-testid="stNumberInputContainer"] button {
+        background: var(--stepper-bg) !important;
+        background-color: var(--stepper-bg) !important;
+        border: 1px solid var(--stepper-border) !important;
+        color: var(--stepper-text) !important;
+        -webkit-text-fill-color: var(--stepper-text) !important;
         border-radius: 4px !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -467,141 +675,209 @@ st.markdown(
         width: 22px !important;
         min-height: 22px !important;
         min-width: 22px !important;
-        max-height: 22px !important;
-        max-width: 22px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        align-self: center !important;
         cursor: pointer !important;
         transition: all 0.15s ease !important;
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-        box-sizing: border-box !important;
     }
 
     button[data-testid="stNumberInputStepDown"]:hover,
     button[data-testid="stNumberInputStepUp"]:hover,
-    div[data-testid="stNumberInputContainer"] button:hover,
-    div[data-testid="stNumberInput"] button:hover,
-    div[data-testid="stNumberInputStepDown"] button:hover,
-    div[data-testid="stNumberInputStepUp"] button:hover {
-        background: #f1f5f9 !important;
-        background-color: #f1f5f9 !important;
-        border-color: #94a3b8 !important;
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
+    div[data-testid="stNumberInputContainer"] button:hover {
+        background: var(--stepper-hover-bg) !important;
+        border-color: var(--input-border-hover) !important;
+        color: var(--input-text) !important;
     }
 
-    div[data-testid="stNumberInput"] button svg,
-    div[data-testid="stNumberInputContainer"] button svg,
-    div[data-testid="stNumberInputStepDown"] svg,
-    div[data-testid="stNumberInputStepUp"] svg,
-    button[data-testid="stNumberInputStepDown"] svg,
-    button[data-testid="stNumberInputStepUp"] svg {
-        fill: #334155 !important;
-        color: #334155 !important;
-        width: 9px !important;
-        height: 9px !important;
-        min-width: 9px !important;
-        min-height: 9px !important;
-        max-width: 9px !important;
-        max-height: 9px !important;
-        display: block !important;
-        margin: auto !important;
-    }
-
-    /* 9. Focus State across all widgets */
-    div[data-testid="stNumberInputContainer"]:focus-within,
-    div[data-testid="stNumberInput"] div[data-baseweb="input"]:focus-within,
-    div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within,
-    div[data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within,
-    div[data-testid="stSelectbox"]:focus-within [data-baseweb="select"] > div,
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div[aria-expanded="true"] {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        border-color: #2563eb !important;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
-    }
-
-    /* Inner nested container resets */
-    div[data-testid="stNumberInputContainer"] div[data-baseweb="base-input"],
-    div[data-testid="stNumberInputContainer"] div[data-baseweb="input"],
-    div[data-testid="stNumberInput"] div[data-baseweb="base-input"],
-    div[data-testid="stTextInput"] div[data-baseweb="base-input"] {
-        border: none !important;
+    /* =====================================================
+       SELECTBOX & BULLETPROOF CRISP SEPARATE BOXES
+       (Gender, Marital Status, Employment Status,
+        Education Level, Loan Purpose, Property Area, Employer Category)
+       ===================================================== */
+    div[data-testid="stSelectbox"] {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        width: 100% !important;
         background: transparent !important;
-        background-color: transparent !important;
+        border: none !important;
+    }
+
+    div[data-testid="stSelectbox"] > div {
+        background: transparent !important;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    /* Main outer box container for selectbox - identical background (#ffffff in light, #090d16 in dark) & border as Age / Loan Term */
+    div[data-testid="stSelectbox"] [data-baseweb="select"],
+    div[data-testid="stSelectbox"] div[data-baseweb="select"],
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[role="combobox"],
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] div[role="combobox"],
+    div[data-testid="stSelectbox"] [aria-haspopup="listbox"] {
+        background: var(--input-bg) !important;
+        background-color: var(--input-bg) !important;
+        border: 1.5px solid var(--input-border) !important;
+        border-radius: 8px !important;
+        min-height: 40px !important;
+        height: 40px !important;
+        color: var(--input-text) !important;
+        -webkit-text-fill-color: var(--input-text) !important;
+        box-shadow: var(--input-shadow) !important;
+        transition: all 0.15s ease-in-out !important;
+        box-sizing: border-box !important;
+        cursor: pointer !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+        outline: none !important;
+    }
+
+    /* Prevent double borders and transparent inner layers on nested child divs */
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[role="combobox"] {
+        background: var(--input-bg) !important;
+        background-color: var(--input-bg) !important;
+        border: none !important;
         box-shadow: none !important;
     }
 
-    /* Streamlit input instruction / tooltip styling */
-    div[data-testid="stInputInstructions"],
-    div[data-testid="stInputInstructions"] > span {
-        display: none !important;
+    div[data-testid="stSelectbox"] [data-baseweb="select"]:hover,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div:hover,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[role="combobox"]:hover,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] div[role="combobox"]:hover {
+        border-color: var(--input-border-hover) !important;
     }
 
-    /* Streamlit Alert, Warning, Notification High-Contrast Light Styling */
-    div[data-testid="stAlert"],
-    .stAlert,
-    div[data-testid="stNotification"],
-    div[data-baseweb="notification"] {
-        background-color: #fffbeb !important;
-        background: #fffbeb !important;
-        border: 1.5px solid #fcd34d !important;
-        border-left: 5px solid #f59e0b !important;
-        border-radius: 8px !important;
-        color: #78350f !important;
-        -webkit-text-fill-color: #78350f !important;
+    div[data-testid="stSelectbox"] [data-baseweb="select"]:focus,
+    div[data-testid="stSelectbox"] [data-baseweb="select"]:focus-visible,
+    div[data-testid="stSelectbox"] [data-baseweb="select"]:focus-within,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within,
+    div[data-testid="stSelectbox"] [data-baseweb="select"][aria-expanded="true"],
+    div[data-testid="stSelectbox"] div[data-baseweb="select"][aria-expanded="true"],
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[aria-expanded="true"],
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-expanded="true"],
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[role="combobox"]:focus-within,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] div[role="combobox"]:focus-within {
+        border-color: #2563eb !important;
+        box-shadow: 0 0 0 3px var(--input-focus-ring) !important;
+        outline: none !important;
+    }
+
+    /* Inner value container */
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div > div:first-child,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div:first-child,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div[role="combobox"] > div:first-child {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: flex !important;
+        align-items: center !important;
+        flex: 1 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Typography inside Selectbox */
+    div[data-testid="stSelectbox"] [data-baseweb="select"] span,
+    div[data-testid="stSelectbox"] [role="combobox"] span,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] span {
+        font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+        font-size: 0.85rem !important;
         font-weight: 600 !important;
+        color: var(--input-text) !important;
+        -webkit-text-fill-color: var(--input-text) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    div[data-testid="stSelectbox"] [data-testid="stSelectboxPlaceholder"],
+    div[data-testid="stSelectbox"] [data-baseweb="placeholder"] {
+        color: var(--input-placeholder) !important;
+        -webkit-text-fill-color: var(--input-placeholder) !important;
         font-size: 0.82rem !important;
-        padding: 0.6rem 0.85rem !important;
-        margin: 0.5rem 0 !important;
-    }
-    div[data-testid="stAlert"] *,
-    .stAlert *,
-    div[data-testid="stNotification"] *,
-    div[data-baseweb="notification"] * {
-        color: #78350f !important;
-        -webkit-text-fill-color: #78350f !important;
-    }
-    div[data-testid="stAlert"] svg {
-        fill: #d97706 !important;
-        color: #d97706 !important;
-    }
-    div[data-testid="stCaptionContainer"],
-    .stCaption,
-    small {
-        color: #475569 !important;
-        -webkit-text-fill-color: #475569 !important;
-        font-size: 0.74rem !important;
-        font-weight: 600 !important;
+        font-weight: 500 !important;
+        white-space: nowrap !important;
     }
 
-    /* 10. Dropdown Popup Menu (Listbox when opened) - Pure White with Clear Options */
+    /* Guaranteed Dropdown Chevron Symbol Styling (Clean target on icon container and SVG only) */
+    div[data-testid="stSelectbox"] [data-baseweb="icon"],
+    div[data-baseweb="select"] [data-baseweb="icon"] {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        min-height: 18px !important;
+        flex-shrink: 0 !important;
+        pointer-events: none !important;
+        background: transparent !important;
+    }
+
+    div[data-testid="stSelectbox"] [data-baseweb="icon"] svg,
+    div[data-baseweb="select"] svg,
+    div[data-testid="stSelectbox"] svg {
+        width: 16px !important;
+        height: 16px !important;
+        min-width: 16px !important;
+        min-height: 16px !important;
+        display: block !important;
+        fill: var(--app-text-muted) !important;
+        stroke: var(--app-text-muted) !important;
+        color: var(--app-text-muted) !important;
+        opacity: 0.9 !important;
+        visibility: visible !important;
+        transition: transform 0.15s ease, fill 0.15s ease !important;
+    }
+
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover svg,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] > div:hover svg {
+        fill: var(--input-text) !important;
+        stroke: var(--input-text) !important;
+        color: var(--input-text) !important;
+        opacity: 1 !important;
+    }
+
+    /* Dropdown Options Popup Menu */
     body > div[data-baseweb="popover"],
     div[data-baseweb="popover"],
     div[data-baseweb="popover"] > div,
     div[data-baseweb="menu"],
     div[data-testid="stSelectboxVirtualDropdown"],
     ul[role="listbox"] {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        border: 1.5px solid #cbd5e1 !important;
-        border-radius: 8px !important;
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12) !important;
-        padding: 4px !important;
+        background-color: var(--app-card-bg) !important;
+        background: var(--app-card-bg) !important;
+        border: 1.5px solid var(--app-card-border) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35) !important;
+        padding: 6px !important;
         z-index: 999999 !important;
     }
 
-    /* 11. Individual Dropdown Options */
     li[role="option"],
     div[role="option"] {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        color: #0f294d !important;
-        -webkit-text-fill-color: #0f294d !important;
+        background-color: transparent !important;
+        background: transparent !important;
+        color: var(--input-text) !important;
+        -webkit-text-fill-color: var(--input-text) !important;
         font-weight: 600 !important;
-        font-size: 0.83rem !important;
+        font-size: 0.84rem !important;
         border-radius: 6px !important;
         padding: 8px 12px !important;
         margin: 2px 0 !important;
@@ -609,37 +885,41 @@ st.markdown(
         transition: all 0.12s ease !important;
     }
     li[role="option"]:hover,
-    li[role="option"]:focus,
     li[role="option"][aria-selected="true"],
     div[role="option"]:hover,
     div[role="option"][aria-selected="true"] {
-        background-color: #eef4fc !important;
-        background: #eef4fc !important;
-        color: #1d4ed8 !important;
-        -webkit-text-fill-color: #1d4ed8 !important;
+        background-color: var(--btn-secondary-bg) !important;
+        background: var(--btn-secondary-bg) !important;
+        color: var(--btn-secondary-hover-text) !important;
+        -webkit-text-fill-color: var(--btn-secondary-hover-text) !important;
         font-weight: 700 !important;
     }
 
+    div[data-testid="stInputInstructions"],
+    div[data-testid="stInputInstructions"] > span {
+        display: none !important;
+    }
+
     /* =====================================================
-       PREDICT BUTTON (PRIMARY ACTION)
+       BUTTONS (PRIMARY PREDICT & SECONDARY CLEAR ALL)
        ===================================================== */
     div.stButton > button[kind="primary"],
     button[data-testid="baseButton-primary"],
     button[data-testid="stBaseButton-primary"] {
-        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+        background: var(--btn-primary-bg) !important;
         background-color: #2563eb !important;
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
         border: none !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         height: 44px !important;
         min-height: 44px !important;
-        font-size: 0.92rem !important;
+        font-size: 0.94rem !important;
         font-weight: 700 !important;
         letter-spacing: 0.01em !important;
-        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28) !important;
-        transition: all 0.15s ease-in-out !important;
-        margin-top: 0.65rem !important;
+        box-shadow: var(--btn-primary-shadow) !important;
+        transition: all 0.18s ease-in-out !important;
+        margin-top: 0.75rem !important;
         cursor: pointer !important;
         display: flex !important;
         align-items: center !important;
@@ -647,32 +927,29 @@ st.markdown(
     }
     div.stButton > button[kind="primary"]:hover,
     button[data-testid="baseButton-primary"]:hover {
-        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
-        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38) !important;
-        transform: translateY(-1px) !important;
+        box-shadow: var(--btn-primary-hover-shadow) !important;
+        transform: translateY(-1.5px) !important;
+        filter: brightness(1.08) !important;
     }
 
-    /* =====================================================
-       CLEAR ALL BUTTON - COHESIVE ICE-BLUE WITH HOVER EFFECT
-       ===================================================== */
     button[data-testid="baseButton-secondary"],
     button[data-testid="stBaseButton-secondary"],
     button[kind="secondary"],
     .clear-btn-wrap button,
     .clear-btn-wrap div.stButton > button,
     div[data-testid="stButton"] > button:not([kind="primary"]) {
-        background: #eef4fc !important;
-        background-color: #eef4fc !important;
-        color: #1e3a8a !important;
-        -webkit-text-fill-color: #1e3a8a !important;
-        border: 1.5px solid #c8ddf7 !important;
+        background: var(--btn-secondary-bg) !important;
+        background-color: var(--btn-secondary-bg) !important;
+        color: var(--btn-secondary-text) !important;
+        -webkit-text-fill-color: var(--btn-secondary-text) !important;
+        border: 1.5px solid var(--btn-secondary-border) !important;
         border-radius: 8px !important;
         height: 38px !important;
         min-height: 38px !important;
         font-size: 0.82rem !important;
         font-weight: 700 !important;
         padding: 0 1.15rem !important;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
         transition: all 0.18s ease-in-out !important;
         cursor: pointer !important;
         display: inline-flex !important;
@@ -684,36 +961,32 @@ st.markdown(
     button[kind="secondary"]:hover,
     .clear-btn-wrap button:hover,
     div[data-testid="stButton"] > button:not([kind="primary"]):hover {
-        background: #dbeafe !important;
-        background-color: #dbeafe !important;
-        color: #1d4ed8 !important;
-        -webkit-text-fill-color: #1d4ed8 !important;
-        border-color: #93c5fd !important;
-        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15) !important;
+        background: var(--btn-secondary-hover-bg) !important;
+        border-color: var(--btn-secondary-hover-border) !important;
+        color: var(--btn-secondary-hover-text) !important;
+        -webkit-text-fill-color: var(--btn-secondary-hover-text) !important;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18) !important;
         transform: translateY(-1px) !important;
     }
 
-    /* Result Panel Styling (Right Column - Distinct Separated Boxes) */
-    .result-container-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.65rem;
-    }
+    /* =====================================================
+       RESULT PANEL & METRICS (SHARP, HIGH CONTRAST BOXES)
+       ===================================================== */
     .result-header-box {
-        background: #ffffff;
-        border: 1.5px solid #dbe4f0;
+        background: var(--metric-card-bg);
+        border: 1.5px solid var(--metric-card-border);
         border-radius: 10px;
-        padding: 0.75rem 1rem;
+        padding: 0.8rem 1.05rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
-        margin-bottom: 0.65rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+        margin-bottom: 0.75rem;
     }
     .result-title-text {
-        font-size: 0.92rem;
+        font-size: 0.94rem;
         font-weight: 800;
-        color: #0f294d;
+        color: var(--app-text-title);
         display: flex;
         align-items: center;
         gap: 0.4rem;
@@ -723,68 +996,68 @@ st.markdown(
     .badge-status {
         display: inline-flex;
         align-items: center;
-        gap: 0.3rem;
-        padding: 0.25rem 0.65rem;
+        gap: 0.35rem;
+        padding: 0.28rem 0.75rem;
         border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
     }
     .badge-status.approved {
-        background: #dcfce7;
-        color: #15803d;
-        border: 1px solid #86efac;
+        background: var(--badge-approved-bg);
+        color: var(--badge-approved-text);
+        border: 1.5px solid var(--badge-approved-border);
     }
     .badge-status.rejected {
-        background: #fee2e2;
-        color: #b91c1c;
-        border: 1px solid #fca5a5;
+        background: var(--badge-rejected-bg);
+        color: var(--badge-rejected-text);
+        border: 1.5px solid var(--badge-rejected-border);
     }
     .badge-status.ready {
-        background: #eef4fc;
-        color: #1e3a8a;
-        border: 1px solid #c8ddf7;
+        background: var(--badge-ready-bg);
+        color: var(--badge-ready-text);
+        border: 1.5px solid var(--badge-ready-border);
     }
 
-    /* Gauge / Probability Card (Separated Box) */
     .prob-metric-card {
-        background: #ffffff;
-        border: 1.5px solid #dbe4f0;
-        border-radius: 10px;
-        padding: 1.15rem 1rem;
+        background: var(--metric-card-bg);
+        border: 1.5px solid var(--metric-card-border);
+        border-radius: 12px;
+        padding: 1.25rem 1rem;
         text-align: center;
-        margin-bottom: 0.65rem;
-        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+        margin-bottom: 0.75rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
     .prob-metric-number {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
         font-weight: 800;
         line-height: 1;
         letter-spacing: -0.03em;
     }
     .prob-metric-number.approved {
-        color: #059669;
+        color: #10b981;
     }
     .prob-metric-number.rejected {
-        color: #dc2626;
+        color: #ef4444;
     }
     .prob-metric-label {
-        font-size: 0.72rem;
+        font-size: 0.74rem;
         font-weight: 700;
-        color: #64748b;
+        color: var(--app-text-muted);
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-top: 0.45rem;
+        margin-top: 0.5rem;
     }
 
-    /* Modern Progress Track */
     .prob-track {
         width: 100%;
-        height: 8px;
-        background: #e2e8f0;
+        height: 9px;
+        background: var(--app-bg);
         border-radius: 999px;
         overflow: hidden;
-        margin-top: 0.65rem;
+        margin-top: 0.75rem;
+        border: 1px solid var(--metric-card-border);
     }
     .prob-fill {
         height: 100%;
@@ -792,196 +1065,273 @@ st.markdown(
         transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .prob-fill.approved {
-        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(90deg, #34d399 0%, #059669 100%);
     }
     .prob-fill.rejected {
         background: linear-gradient(90deg, #f87171 0%, #dc2626 100%);
     }
 
-    /* 2-Column Mini Metrics in Right Panel (Separated Boxes) */
     .mini-metrics-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.65rem;
-        margin-bottom: 0.65rem;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
     }
     .mini-metric-box {
-        background: #ffffff;
-        border: 1.5px solid #dbe4f0;
+        background: var(--metric-card-bg);
+        border: 1.5px solid var(--metric-card-border);
         border-radius: 10px;
-        padding: 0.75rem 0.85rem;
-        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+        padding: 0.8rem 0.9rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
     .mini-metric-tag {
-        font-size: 0.65rem;
-        font-weight: 700;
-        color: #64748b;
+        font-size: 0.68rem;
+        font-weight: 800;
+        color: var(--app-text-muted);
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.04em;
     }
     .mini-metric-value {
-        font-size: 0.98rem;
+        font-size: 1rem;
         font-weight: 800;
-        margin-top: 0.2rem;
+        margin-top: 0.25rem;
+        color: var(--app-text-title);
     }
 
     .risk-pill {
         display: inline-block;
-        padding: 0.15rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.75rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 5px;
+        font-size: 0.76rem;
         font-weight: 800;
     }
-    .risk-low { background: #dcfce7; color: #15803d; }
-    .risk-moderate { background: #fef3c7; color: #b45309; }
-    .risk-high { background: #fee2e2; color: #b91c1c; }
-
-    /* Summary Note Card (Separated Box) */
-    .summary-note-card {
-        background: #f8fafc;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 10px;
-        padding: 0.75rem 0.95rem;
-        font-size: 0.74rem;
-        color: #334e68;
-        line-height: 1.4;
-        margin-bottom: 0.65rem;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
+    .risk-low { 
+        background: var(--badge-approved-bg); 
+        color: var(--badge-approved-text); 
+        border: 1px solid var(--badge-approved-border); 
+    }
+    .risk-moderate { 
+        background: #fef3c7; 
+        color: #b45309; 
+        border: 1px solid #fcd34d; 
+    }
+    .risk-high { 
+        background: var(--badge-rejected-bg); 
+        color: var(--badge-rejected-text); 
+        border: 1px solid var(--badge-rejected-border); 
     }
 
-    /* Empty state (Separated Box) */
+    @media (prefers-color-scheme: dark) {
+        .risk-moderate {
+            background: #382006;
+            color: #fde047;
+            border: 1px solid #78350f;
+        }
+    }
+    [data-theme="dark"] .risk-moderate {
+        background: #382006 !important;
+        color: #fde047 !important;
+        border: 1px solid #78350f !important;
+    }
+
+    .summary-note-card {
+        background: var(--sub-box-bg);
+        border: 1.5px solid var(--sub-box-border);
+        border-radius: 10px;
+        padding: 0.85rem 1rem;
+        font-size: 0.76rem;
+        color: var(--app-text-muted);
+        line-height: 1.45;
+        margin-bottom: 0.75rem;
+    }
+    .summary-note-card strong {
+        color: var(--app-text-title);
+    }
+
     .empty-state-card {
-        background: #f8fafc;
-        border: 1.5px dashed #cbd5e1;
+        background: var(--sub-box-bg);
+        border: 1.5px dashed var(--app-card-border);
         border-radius: 10px;
         text-align: center;
-        padding: 1.8rem 1rem;
-        color: #64748b;
+        padding: 2rem 1.2rem;
+        color: var(--app-text-muted);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0.65rem;
+        margin-bottom: 0.75rem;
     }
     .empty-icon {
-        font-size: 2.4rem;
-        margin-bottom: 0.6rem;
+        font-size: 2.5rem;
+        margin-bottom: 0.65rem;
     }
 
     /* Expander styling */
     div[data-testid="stExpander"] {
-        border: 1.5px solid #dbe4f0 !important;
+        border: 1.5px solid var(--app-card-border) !important;
         border-radius: 10px !important;
-        background: #ffffff !important;
-        margin-top: 0.65rem !important;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+        background: var(--app-card-bg) !important;
+        margin-top: 0.75rem !important;
     }
     div[data-testid="stExpander"] summary {
-        font-size: 0.75rem !important;
+        font-size: 0.78rem !important;
         font-weight: 700 !important;
-        color: #1e293b !important;
-        padding: 0.4rem 0.6rem !important;
+        color: var(--app-text-title) !important;
+        padding: 0.5rem 0.75rem !important;
     }
 
-    /* Light Theme Submitted Info Table */
+    /* Responsive Table */
     .table-responsive-box {
         overflow-x: auto;
-        border-radius: 6px;
-        border: 1px solid #e2e8f0;
-        margin-top: 0.35rem;
+        border-radius: 8px;
+        border: 1.5px solid var(--table-border);
+        margin-top: 0.4rem;
         -webkit-overflow-scrolling: touch;
     }
-    .light-custom-table {
+    .adaptive-custom-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.75rem;
+        font-size: 0.76rem;
         text-align: left;
     }
-    .light-custom-table th {
-        background: #f1f5f9;
-        color: #334155;
-        font-weight: 700;
-        padding: 0.45rem 0.65rem;
-        border-bottom: 1px solid #cbd5e1;
-        border-right: 1px solid #e2e8f0;
+    .adaptive-custom-table th {
+        background: var(--table-th-bg);
+        color: var(--table-th-text);
+        font-weight: 800;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1.5px solid var(--table-border);
+        border-right: 1px solid var(--table-border);
     }
-    .light-custom-table td {
-        background: #ffffff;
-        color: #0f172a;
-        padding: 0.45rem 0.65rem;
-        border-bottom: 1px solid #f1f5f9;
-        border-right: 1px solid #f1f5f9;
+    .adaptive-custom-table td {
+        background: var(--table-td-bg);
+        color: var(--app-text-body);
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid var(--table-border);
+        border-right: 1px solid var(--table-border);
         font-weight: 600;
     }
-    .light-custom-table tr:nth-child(even) td {
-        background: #f8fafc;
+    .adaptive-custom-table tr:nth-child(even) td {
+        background: var(--table-td-alt);
     }
 
     /* =====================================================
-       COMPREHENSIVE MOBILE RESPONSIVENESS (<768px & <480px)
+       MOBILE RESPONSIVENESS
        ===================================================== */
     @media (max-width: 768px) {
         .block-container {
             padding-top: 0.4rem !important;
             padding-left: 0.75rem !important;
             padding-right: 0.75rem !important;
-            padding-bottom: 1.5rem !important;
+            padding-bottom: 1.75rem !important;
         }
         .top-header-row {
             flex-direction: column;
             align-items: stretch;
-            gap: 0.6rem;
-            margin-bottom: 0.6rem;
+            gap: 0.55rem;
+            margin-bottom: 0.55rem;
         }
         .app-brand-container {
-            gap: 0.55rem;
+            gap: 0.6rem;
         }
         .app-logo-badge {
-            width: 36px;
-            height: 36px;
-            font-size: 1.15rem;
+            width: 38px;
+            height: 38px;
+            font-size: 1.2rem;
         }
         .app-brand-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem !important;
         }
         .app-brand-subtitle {
-            font-size: 0.7rem;
+            font-size: 0.72rem !important;
         }
         .highlighted-notice-bar {
             flex-direction: column;
             align-items: flex-start;
             gap: 0.4rem;
-            padding: 0.55rem 0.75rem;
-            font-size: 0.73rem;
+            padding: 0.6rem 0.85rem;
+            font-size: 0.74rem;
+            margin-bottom: 0.75rem;
         }
         .clear-btn-wrap {
             width: 100%;
         }
         .clear-btn-wrap button,
         .clear-btn-wrap div.stButton > button,
-        button[data-testid="baseButton-secondary"] {
+        button[data-testid="baseButton-secondary"],
+        button[data-testid="stBaseButton-secondary"] {
             width: 100% !important;
             height: 40px !important;
         }
-        div.stButton > button[kind="primary"] {
+        div[data-testid="stVerticalBlockBorderWrapper"] {
+            padding: 0.95rem 0.85rem !important;
+            border-radius: 12px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        div.stButton > button[kind="primary"],
+        button[data-testid="baseButton-primary"],
+        button[data-testid="stBaseButton-primary"] {
             width: 100% !important;
-            height: 44px !important;
+            height: 46px !important;
             font-size: 0.95rem !important;
+            margin-top: 0.55rem !important;
         }
         div[data-testid="stNumberInput"] div[data-baseweb="input"],
         div[data-testid="stTextInput"] div[data-baseweb="input"],
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+        div[data-testid="stSelectbox"] [data-baseweb="select"] > div {
             min-height: 42px !important;
             height: 42px !important;
+        }
+        .field-label-text {
+            font-size: 0.80rem !important;
+            margin-bottom: 3px !important;
+        }
+        .field-range-below {
+            font-size: 0.68rem !important;
+            margin-top: -2px !important;
+            margin-bottom: 0.4rem !important;
+        }
+        .section-headline {
+            font-size: 0.84rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .prob-metric-card {
+            padding: 1rem 0.85rem !important;
+            margin-bottom: 0.65rem !important;
+        }
+        .prob-metric-number {
+            font-size: 2.25rem !important;
+        }
+        .mini-metrics-row {
+            gap: 0.55rem !important;
+            margin-bottom: 0.65rem !important;
+        }
+        .mini-metric-box {
+            padding: 0.65rem 0.75rem !important;
+        }
+        .mini-metric-value {
+            font-size: 0.94rem !important;
+        }
+        .summary-note-card {
+            padding: 0.75rem 0.85rem !important;
+            font-size: 0.74rem !important;
+            margin-bottom: 0.65rem !important;
         }
     }
 
     @media (max-width: 480px) {
+        .block-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
         .app-brand-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem !important;
+        }
+        .app-brand-subtitle {
+            font-size: 0.68rem !important;
         }
         .prob-metric-number {
-            font-size: 2rem;
+            font-size: 2rem !important;
         }
     }
     </style>
@@ -1036,7 +1386,7 @@ def clear_all():
 
 
 # =========================================================
-# HEADER & UPDATED IMPORTANT NOTICE
+# HEADER & IMPORTANT NOTICE
 # =========================================================
 
 head_col1, head_col2 = st.columns([5.8, 1.4], vertical_alignment="center")
@@ -1081,6 +1431,41 @@ st.markdown(
 
 
 # =========================================================
+# HELPER FUNCTIONS FOR FORM HEADERS & SAAS ALERTS
+# =========================================================
+
+def render_field_header(label_text, is_invalid=False, alert_msg=""):
+    alert_html = f'<span class="saas-micro-alert">⚠️ {alert_msg}</span>' if (is_invalid and alert_msg) else ""
+    st.markdown(
+        f"""
+        <div class="field-label-row">
+            <span class="field-label-text">{label_text}</span>
+            {alert_html}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+def render_range_footer(range_text, is_invalid=False, error_text=""):
+    if is_invalid and error_text:
+        st.markdown(
+            f'<div class="field-range-below"><span class="range-badge-tag error-tag">⚠️ Invalid</span> <span class="range-error-text">{error_text}</span></div>',
+            unsafe_allow_html=True
+        )
+    else:
+        st.markdown(
+            f'<div class="field-range-below"><span class="range-badge-tag">Range</span> {range_text}</div>',
+            unsafe_allow_html=True
+        )
+
+def render_options_footer(options_text):
+    st.markdown(
+        f'<div class="field-range-below"><span class="range-badge-tag">Options</span> {options_text}</div>',
+        unsafe_allow_html=True
+    )
+
+
+# =========================================================
 # MAIN 2-COLUMN DASHBOARD (INPUT LEFT, RESULT BESIDE ON RIGHT)
 # =========================================================
 
@@ -1101,50 +1486,39 @@ with form_col:
         # Row 1: Applicant Income | Coapplicant Income | DTI Ratio
         r1c1, r1c2, r1c3 = st.columns(3)
         with r1c1:
-            st.markdown(
-                '<div class="field-label-text">Applicant Income (₹)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("applicant_income")
+            is_inv = curr_val is not None and curr_val < 0
+            render_field_header("Applicant Income (₹)", is_inv, "Must be ≥ 0")
             applicant_income = st.number_input(
                 "Applicant Income (₹)",
-                min_value=0.0,
                 value=None,
                 step=500.0,
                 placeholder="Enter income",
                 key="applicant_income",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> ≥ ₹0</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("≥ ₹0", is_inv, "Must be ≥ ₹0")
+
         with r1c2:
-            st.markdown(
-                '<div class="field-label-text">Coapplicant Income (₹)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("coapplicant_income")
+            is_inv = curr_val is not None and curr_val < 0
+            render_field_header("Coapplicant Income (₹)", is_inv, "Must be ≥ 0")
             coapplicant_income = st.number_input(
                 "Coapplicant Income (₹)",
-                min_value=0.0,
                 value=None,
                 step=500.0,
                 placeholder="Enter income",
                 key="coapplicant_income",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> ≥ ₹0 (0 if none)</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("≥ ₹0 (0 if none)", is_inv, "Must be ≥ ₹0")
+
         with r1c3:
-            st.markdown(
-                '<div class="field-label-text">DTI Ratio (Debt-to-Income)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("dti_ratio")
+            is_inv = curr_val is not None and (curr_val < 0.0 or curr_val > 1.0)
+            render_field_header("DTI Ratio (Debt-to-Income)", is_inv, "0.00–1.00 Only")
             dti_ratio = st.number_input(
                 "DTI Ratio (Debt-to-Income)",
-                min_value=0.00,
-                max_value=1.00,
                 value=None,
                 step=0.01,
                 format="%.2f",
@@ -1152,173 +1526,128 @@ with form_col:
                 key="dti_ratio",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 0.00 – 1.00 &bull; E.g., 30% → 0.30</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("0.00 – 1.00 &bull; E.g. 0.30", is_inv, "Allowed: 0.00 – 1.00")
 
         # Row 2: Age (In Years) | Credit Score | Savings
         r2c1, r2c2, r2c3 = st.columns(3)
         with r2c1:
-            st.markdown(
-                '<div class="field-label-text">Age (In Years)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("age")
+            is_inv = curr_val is not None and (curr_val < 21 or curr_val > 59)
+            render_field_header("Age (In Years)", is_inv, "21–59 Yrs Only")
             age = st.number_input(
                 "Age (In Years)",
-                min_value=21,
-                max_value=59,
                 value=None,
                 step=1,
                 placeholder="Enter age",
                 key="age",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 21 – 59 Years</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("21 – 59 Years", is_inv, "Allowed: 21 – 59 Years")
+
         with r2c2:
-            st.markdown(
-                '<div class="field-label-text">Credit Score</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("credit_score")
+            is_inv = curr_val is not None and (curr_val < 550.0 or curr_val > 799.0)
+            render_field_header("Credit Score", is_inv, "550–799 Only")
             credit_score = st.number_input(
                 "Credit Score",
-                min_value=550.0,
-                max_value=799.0,
                 value=None,
                 step=1.0,
                 placeholder="Enter credit score",
                 key="credit_score",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 550 – 799</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("550 – 799", is_inv, "Allowed: 550 – 799")
+
         with r2c3:
-            st.markdown(
-                '<div class="field-label-text">Savings (₹)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("savings")
+            is_inv = curr_val is not None and curr_val < 0
+            render_field_header("Savings (₹)", is_inv, "Must be ≥ 0")
             savings = st.number_input(
                 "Savings (₹)",
-                min_value=0.0,
                 value=None,
                 step=500.0,
                 placeholder="Enter savings",
                 key="savings",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> ≥ ₹0</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("≥ ₹0", is_inv, "Must be ≥ ₹0")
 
         # Row 3: Dependents | Existing Loans | Collateral Value
         r3c1, r3c2, r3c3 = st.columns(3)
         with r3c1:
-            st.markdown(
-                '<div class="field-label-text">Dependents</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("dependents")
+            is_inv = curr_val is not None and (curr_val < 0 or curr_val > 3)
+            render_field_header("Dependents", is_inv, "0–3 Only")
             dependents = st.number_input(
                 "Dependents",
-                min_value=0,
-                max_value=3,
                 value=None,
                 step=1,
                 placeholder="Enter dependents",
                 key="dependents",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 0 – 3 Dependents</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("0 – 3 Dependents", is_inv, "Allowed: 0 – 3")
+
         with r3c2:
-            st.markdown(
-                '<div class="field-label-text">Existing Loans</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("existing_loans")
+            is_inv = curr_val is not None and (curr_val < 0 or curr_val > 4)
+            render_field_header("Existing Loans", is_inv, "0–4 Only")
             existing_loans = st.number_input(
                 "Existing Loans",
-                min_value=0,
-                max_value=4,
                 value=None,
                 step=1,
                 placeholder="Enter number of loans",
                 key="existing_loans",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 0 – 4 Active Loans</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("0 – 4 Active Loans", is_inv, "Allowed: 0 – 4")
+
         with r3c3:
-            st.markdown(
-                '<div class="field-label-text">Collateral Value (₹)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("collateral_value")
+            is_inv = curr_val is not None and curr_val < 0
+            render_field_header("Collateral Value (₹)", is_inv, "Must be ≥ 0")
             collateral_value = st.number_input(
                 "Collateral Value (₹)",
-                min_value=0.0,
                 value=None,
                 step=500.0,
                 placeholder="Enter collateral value",
                 key="collateral_value",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> ≥ ₹0</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("≥ ₹0", is_inv, "Must be ≥ ₹0")
 
         # Row 4: Loan Amount | Loan Term | Gender
         r4c1, r4c2, r4c3 = st.columns(3)
         with r4c1:
-            st.markdown(
-                '<div class="field-label-text">Loan Amount (₹)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("loan_amount")
+            is_inv = curr_val is not None and curr_val < 0
+            render_field_header("Loan Amount (₹)", is_inv, "Must be ≥ 0")
             loan_amount = st.number_input(
                 "Loan Amount (₹)",
-                min_value=0.0,
                 value=None,
                 step=500.0,
                 placeholder="Enter loan amount",
                 key="loan_amount",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> ≥ ₹0</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("≥ ₹0", is_inv, "Must be ≥ ₹0")
+
         with r4c2:
-            st.markdown(
-                '<div class="field-label-text">Loan Term (Months)</div>',
-                unsafe_allow_html=True
-            )
+            curr_val = st.session_state.get("loan_term")
+            is_inv = curr_val is not None and (curr_val < 12 or curr_val > 84 or curr_val % 12 != 0)
+            render_field_header("Loan Term (Months)", is_inv, "12–84 (Steps of 12)")
             loan_term = st.number_input(
                 "Loan Term (Months)",
-                min_value=12,
-                max_value=84,
                 value=None,
                 step=12,
                 placeholder="Enter loan term",
                 key="loan_term",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Range</span> 12 – 84 Months (Steps of 12)</div>',
-                unsafe_allow_html=True
-            )
+            render_range_footer("12 – 84 Months (Steps of 12)", is_inv, "Allowed: 12, 24, 36... 84")
+
         with r4c3:
-            st.markdown(
-                '<div class="field-label-text">Gender</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Gender")
             gender = st.selectbox(
                 "Gender",
                 ["Female", "Male"],
@@ -1327,18 +1656,12 @@ with form_col:
                 key="gender",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Female / Male</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Female / Male")
 
         # Row 5: Marital Status | Employment Status | Education Level
         r5c1, r5c2, r5c3 = st.columns(3)
         with r5c1:
-            st.markdown(
-                '<div class="field-label-text">Marital Status</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Marital Status")
             marital_status = st.selectbox(
                 "Marital Status",
                 ["Married", "Single"],
@@ -1347,15 +1670,10 @@ with form_col:
                 key="marital_status",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Married / Single</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Married / Single")
+
         with r5c2:
-            st.markdown(
-                '<div class="field-label-text">Employment Status</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Employment Status")
             employment_status = st.selectbox(
                 "Employment Status",
                 ["Contract", "Salaried", "Self-employed", "Unemployed"],
@@ -1364,15 +1682,10 @@ with form_col:
                 key="employment_status",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Contract / Salaried / Self-emp. / Unemp.</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Contract / Salaried / Self-emp. / Unemp.")
+
         with r5c3:
-            st.markdown(
-                '<div class="field-label-text">Education Level</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Education Level")
             education_level = st.selectbox(
                 "Education Level",
                 ["Graduate", "Not Graduate"],
@@ -1381,10 +1694,7 @@ with form_col:
                 key="education_level",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Graduate / Not Graduate</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Graduate / Not Graduate")
 
         # Section: Loan Information
         st.markdown(
@@ -1394,10 +1704,7 @@ with form_col:
 
         lr1, lr2, lr3 = st.columns(3)
         with lr1:
-            st.markdown(
-                '<div class="field-label-text">Loan Purpose</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Loan Purpose")
             loan_purpose = st.selectbox(
                 "Loan Purpose",
                 ["Business", "Car", "Education", "Home", "Personal"],
@@ -1406,15 +1713,10 @@ with form_col:
                 key="loan_purpose",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Business / Car / Education / Home / Personal</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Business / Car / Education / Home / Personal")
+
         with lr2:
-            st.markdown(
-                '<div class="field-label-text">Property Area</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Property Area")
             property_area = st.selectbox(
                 "Property Area",
                 ["Rural", "Semiurban", "Urban"],
@@ -1423,15 +1725,10 @@ with form_col:
                 key="property_area",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Rural / Semiurban / Urban</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Rural / Semiurban / Urban")
+
         with lr3:
-            st.markdown(
-                '<div class="field-label-text">Employer Category</div>',
-                unsafe_allow_html=True
-            )
+            render_field_header("Employer Category")
             employer_category = st.selectbox(
                 "Employer Category",
                 ["Government", "MNC", "Private", "Unemployed"],
@@ -1440,10 +1737,7 @@ with form_col:
                 key="employer_category",
                 label_visibility="collapsed"
             )
-            st.markdown(
-                '<div class="field-range-below"><span class="range-badge-tag">Options</span> Government / MNC / Private / Unemployed</div>',
-                unsafe_allow_html=True
-            )
+            render_options_footer("Government / MNC / Private / Unemployed")
 
         # Primary Action Button
         predict_button = st.button(
@@ -1460,7 +1754,7 @@ with form_col:
 with result_col:
     with st.container(border=True):
         if not predict_button:
-            # Idle / Ready State (Separated Boxes)
+            # Idle / Ready State
             st.markdown(
                 """
                 <div class="result-header-box">
@@ -1469,20 +1763,20 @@ with result_col:
                 </div>
                 <div class="empty-state-card">
                     <div class="empty-icon">🏛️</div>
-                    <div style="font-weight: 700; color: #0f294d; font-size: 0.95rem; margin-bottom: 0.25rem;">Ready for Prediction</div>
-                    <div style="font-size: 0.78rem; color: #486581; line-height: 1.4;">Enter the applicant details on the left and click predict to calculate the ML loan assessment.</div>
+                    <div style="font-weight: 800; color: var(--app-text-title); font-size: 0.98rem; margin-bottom: 0.35rem;">Ready for Prediction</div>
+                    <div style="font-size: 0.78rem; color: var(--app-text-muted); line-height: 1.45;">Enter the applicant details on the left and click predict to calculate the ML loan assessment.</div>
                 </div>
                 <div class="mini-metrics-row">
                     <div class="mini-metric-box">
                         <div class="mini-metric-tag">Prediction</div>
-                        <div class="mini-metric-value" style="color: #94a3b8;">—</div>
+                        <div class="mini-metric-value" style="color: var(--app-text-subtle);">—</div>
                     </div>
                     <div class="mini-metric-box">
                         <div class="mini-metric-tag">Risk Level</div>
-                        <div class="mini-metric-value" style="color: #94a3b8;">—</div>
+                        <div class="mini-metric-value" style="color: var(--app-text-subtle);">—</div>
                     </div>
                 </div>
-                <div class="summary-note-card" style="text-align: center; color: #64748b; font-size: 0.72rem;">
+                <div class="summary-note-card" style="text-align: center; color: var(--app-text-subtle); font-size: 0.74rem;">
                     No prediction calculated yet. Fill form and click predict.
                 </div>
                 """,
@@ -1510,43 +1804,84 @@ with result_col:
             if property_area is None: missing.append("Property Area")
             if employer_category is None: missing.append("Employer Category")
 
-            if missing:
-                missing_pills = "".join([f'<span style="display:inline-block; background:#fef3c7; color:#92400e; border:1px solid #fde68a; border-radius:4px; padding:2px 7px; font-size:0.7rem; font-weight:700; margin:2px 3px 2px 0;">{field}</span>' for field in missing])
+            out_of_range = []
+            if applicant_income is not None and applicant_income < 0:
+                out_of_range.append("Applicant Income (≥ ₹0)")
+            if coapplicant_income is not None and coapplicant_income < 0:
+                out_of_range.append("Coapplicant Income (≥ ₹0)")
+            if dti_ratio is not None and (dti_ratio < 0.0 or dti_ratio > 1.0):
+                out_of_range.append("DTI Ratio (0.00 – 1.00)")
+            if age is not None and (age < 21 or age > 59):
+                out_of_range.append("Age (21 – 59 Years)")
+            if credit_score is not None and (credit_score < 550.0 or credit_score > 799.0):
+                out_of_range.append("Credit Score (550 – 799)")
+            if savings is not None and savings < 0:
+                out_of_range.append("Savings (≥ ₹0)")
+            if dependents is not None and (dependents < 0 or dependents > 3):
+                out_of_range.append("Dependents (0 – 3)")
+            if existing_loans is not None and (existing_loans < 0 or existing_loans > 4):
+                out_of_range.append("Existing Loans (0 – 4)")
+            if collateral_value is not None and collateral_value < 0:
+                out_of_range.append("Collateral Value (≥ ₹0)")
+            if loan_amount is not None and loan_amount <= 0:
+                out_of_range.append("Loan Amount (Must be > 0)")
+            if loan_term is not None and (loan_term < 12 or loan_term > 84 or loan_term % 12 != 0):
+                out_of_range.append("Loan Term (12 – 84 in steps of 12)")
+
+            if missing or out_of_range:
+                missing_pills = "".join([f'<span style="display:inline-block; background:var(--notice-bg); color:var(--notice-text); border:1.5px solid var(--notice-border); border-radius:4px; padding:2px 8px; font-size:0.72rem; font-weight:700; margin:2px 4px 2px 0;">{field}</span>' for field in missing])
+                range_pills = "".join([f'<span style="display:inline-block; background:#fee2e2; color:#b91c1c; border:1.5px solid #fca5a5; border-radius:4px; padding:2px 8px; font-size:0.72rem; font-weight:700; margin:2px 4px 2px 0;">{field}</span>' for field in out_of_range])
+                
+                notice_items = ""
+                if missing:
+                    notice_items += f"""
+                    <div style="color: var(--notice-text); font-size: 0.78rem; line-height: 1.45; font-weight: 600; margin-bottom: 0.35rem;">
+                        Missing <strong>{len(missing)} required field(s)</strong>:
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom: 0.55rem;">
+                        {missing_pills}
+                    </div>
+                    """
+                if out_of_range:
+                    notice_items += f"""
+                    <div style="color: #dc2626; font-size: 0.78rem; line-height: 1.45; font-weight: 700; margin-bottom: 0.35rem;">
+                        Values out of allowed range (<strong>{len(out_of_range)}</strong>):
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom: 0.35rem;">
+                        {range_pills}
+                    </div>
+                    """
+
                 st.markdown(
                     f"""
                     <div class="result-header-box">
                         <div class="result-title-text">📊 Prediction Result</div>
-                        <span class="badge-status" style="background:#fee2e2; color:#b91c1c; border: 1px solid #fca5a5;">⚠️ Incomplete</span>
+                        <span class="badge-status rejected">⚠️ Attention Needed</span>
                     </div>
-                    <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-left: 5px solid #f59e0b; border-radius: 9px; padding: 0.85rem 1rem; margin-bottom: 0.65rem; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.08);">
-                        <div style="color: #92400e; font-weight: 800; font-size: 0.88rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.35rem;">
-                            <span>⚠️</span> Please complete all required fields.
+                    <div style="background: var(--notice-bg); border: 1.5px solid var(--notice-border); border-left: 5px solid var(--notice-accent); border-radius: 10px; padding: 0.9rem 1.05rem; margin-bottom: 0.75rem; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.08);">
+                        <div style="color: var(--notice-strong); font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+                            <span>⚠️</span> Form Validation Check
                         </div>
-                        <div style="color: #78350f; font-size: 0.76rem; line-height: 1.45; font-weight: 600; margin-bottom: 0.5rem;">
-                            Please enter or select values for the remaining <strong>{len(missing)} field(s)</strong> on the left:
-                        </div>
-                        <div style="display:flex; flex-wrap:wrap; gap:3px;">
-                            {missing_pills}
-                        </div>
+                        {notice_items}
                     </div>
                     <div class="mini-metrics-row">
                         <div class="mini-metric-box">
                             <div class="mini-metric-tag">Status</div>
-                            <div class="mini-metric-value" style="color: #d97706; font-size: 0.88rem;">INCOMPLETE</div>
+                            <div class="mini-metric-value" style="color: #d97706; font-size: 0.92rem;">INCOMPLETE</div>
                         </div>
                         <div class="mini-metric-box">
-                            <div class="mini-metric-tag">Missing Fields</div>
-                            <div class="mini-metric-value" style="color: #dc2626; font-size: 0.88rem;">{len(missing)} Remaining</div>
+                            <div class="mini-metric-tag">Total Issues</div>
+                            <div class="mini-metric-value" style="color: #ef4444; font-size: 0.92rem;">{len(missing) + len(out_of_range)} Issues</div>
                         </div>
                     </div>
-                    <div class="summary-note-card" style="text-align: center; color: #475569; font-weight: 600;">
-                        Provide all required inputs on the left and click Predict again.
+                    <div class="summary-note-card" style="text-align: center; font-weight: 600;">
+                        Correct the highlighted fields on the left and click Predict again.
                     </div>
                     """,
                     unsafe_allow_html=True
                 )
             else:
-                # Run exact ML Pipeline
+                # Run ML Pipeline
                 input_df = pd.DataFrame({
                     "Applicant_Income": [applicant_income],
                     "Coapplicant_Income": [coapplicant_income],
@@ -1650,7 +1985,7 @@ with result_col:
                         <div class="mini-metrics-row">
                             <div class="mini-metric-box">
                                 <div class="mini-metric-tag">Prediction</div>
-                                <div class="mini-metric-value" style="color: #059669;">APPROVED</div>
+                                <div class="mini-metric-value" style="color: #10b981;">APPROVED</div>
                             </div>
                             <div class="mini-metric-box">
                                 <div class="mini-metric-tag">Risk Level</div>
@@ -1693,7 +2028,7 @@ with result_col:
                         <div class="mini-metrics-row">
                             <div class="mini-metric-box">
                                 <div class="mini-metric-tag">Prediction</div>
-                                <div class="mini-metric-value" style="color: #dc2626;">NOT APPROVED</div>
+                                <div class="mini-metric-value" style="color: #ef4444;">NOT APPROVED</div>
                             </div>
                             <div class="mini-metric-box">
                                 <div class="mini-metric-tag">Risk Level</div>
@@ -1707,12 +2042,12 @@ with result_col:
                         unsafe_allow_html=True
                     )
 
-                # Collapsed Expander for Submitted Information (Light, High-Contrast Table)
+                # Collapsed Expander for Submitted Information
                 with st.expander("👁 View Submitted Information", expanded=False):
                     st.markdown(
                         f"""
                         <div class="table-responsive-box">
-                            <table class="light-custom-table">
+                            <table class="adaptive-custom-table">
                                 <thead>
                                     <tr>
                                         <th>Field</th>
