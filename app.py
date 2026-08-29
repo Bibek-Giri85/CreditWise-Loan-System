@@ -2055,8 +2055,9 @@ with result_col:
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>Applicant Income</td><td>₹{applicant_income:,.2f}</td></tr>
-                                    <tr><td>Coapplicant Income</td><td>₹{coapplicant_income:,.2f}</td></tr>
+                                    <tr><td>Applicant Income (Monthly)</td><td>₹{applicant_income:,.2f}</td></tr>
+                                    <tr><td>Coapplicant Income (Monthly)</td><td>₹{coapplicant_income:,.2f}</td></tr>
+        
                                     <tr><td>DTI Ratio</td><td>{dti_ratio * 100:.1f}% ({dti_ratio:.2f})</td></tr>
                                     <tr><td>Age</td><td>{age} Years</td></tr>
                                     <tr><td>Credit Score</td><td>{credit_score:.0f}</td></tr>
