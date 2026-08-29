@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import textwrap
+
+
+def render_html(html_str):
+    st.markdown(textwrap.dedent(html_str).strip(), unsafe_allow_html=True)
 
 
 # =========================================================
@@ -479,8 +484,8 @@ st.markdown(
         font-size: 0.68rem;
         font-weight: 600;
         color: var(--app-text-muted) !important;
-        margin-top: -6px !important;
-        margin-bottom: 0.35rem !important;
+        margin-top: -8px !important;
+        margin-bottom: 0.25rem !important;
         display: flex !important;
         align-items: center !important;
         justify-content: flex-end !important;
@@ -546,8 +551,8 @@ st.markdown(
         padding-bottom: 0px !important;
     }
     div[data-testid="element-container"]:has(.field-range-below) {
-        margin-top: 2px !important;
-        margin-bottom: 0.35rem !important;
+        margin-top: -2px !important;
+        margin-bottom: 0.25rem !important;
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
@@ -1488,12 +1493,12 @@ with form_col:
         with r1c1:
             curr_val = st.session_state.get("applicant_income")
             is_inv = curr_val is not None and curr_val < 0
-            render_field_header("Applicant Income (₹)", is_inv, "Must be ≥ 0")
+            render_field_header("Applicant Income (Monthly) (₹)", is_inv, "Must be ≥ 0")
             applicant_income = st.number_input(
-                "Applicant Income (₹)",
+                "Applicant Income (Monthly) (₹)",
                 value=None,
                 step=500.0,
-                placeholder="Enter income",
+                placeholder="Enter monthly income",
                 key="applicant_income",
                 label_visibility="collapsed"
             )
@@ -1502,12 +1507,12 @@ with form_col:
         with r1c2:
             curr_val = st.session_state.get("coapplicant_income")
             is_inv = curr_val is not None and curr_val < 0
-            render_field_header("Coapplicant Income (₹)", is_inv, "Must be ≥ 0")
+            render_field_header("Coapplicant Income (Monthly) (₹)", is_inv, "Must be ≥ 0")
             coapplicant_income = st.number_input(
-                "Coapplicant Income (₹)",
+                "Coapplicant Income (Monthly) (₹)",
                 value=None,
                 step=500.0,
-                placeholder="Enter income",
+                placeholder="Enter monthly income",
                 key="coapplicant_income",
                 label_visibility="collapsed"
             )
@@ -1755,7 +1760,7 @@ with result_col:
     with st.container(border=True):
         if not predict_button:
             # Idle / Ready State
-            st.markdown(
+            render_html(
                 """
                 <div class="result-header-box">
                     <div class="result-title-text">📊 Prediction Result</div>
@@ -1779,14 +1784,13 @@ with result_col:
                 <div class="summary-note-card" style="text-align: center; color: var(--app-text-subtle); font-size: 0.74rem;">
                     No prediction calculated yet. Fill form and click predict.
                 </div>
-                """,
-                unsafe_allow_html=True
+                """
             )
         else:
             # Validation Check
             missing = []
-            if applicant_income is None: missing.append("Applicant Income")
-            if coapplicant_income is None: missing.append("Coapplicant Income")
+            if applicant_income is None: missing.append("Applicant Income (Monthly)")
+            if coapplicant_income is None: missing.append("Coapplicant Income (Monthly)")
             if dti_ratio is None: missing.append("DTI Ratio")
             if age is None: missing.append("Age")
             if credit_score is None: missing.append("Credit Score")
@@ -1806,9 +1810,9 @@ with result_col:
 
             out_of_range = []
             if applicant_income is not None and applicant_income < 0:
-                out_of_range.append("Applicant Income (≥ ₹0)")
+                out_of_range.append("Applicant Income (Monthly) (≥ ₹0)")
             if coapplicant_income is not None and coapplicant_income < 0:
-                out_of_range.append("Coapplicant Income (≥ ₹0)")
+                out_of_range.append("Coapplicant Income (Monthly) (≥ ₹0)")
             if dti_ratio is not None and (dti_ratio < 0.0 or dti_ratio > 1.0):
                 out_of_range.append("DTI Ratio (0.00 – 1.00)")
             if age is not None and (age < 21 or age > 59):
@@ -1852,7 +1856,7 @@ with result_col:
                     </div>
                     """
 
-                st.markdown(
+                render_html(
                     f"""
                     <div class="result-header-box">
                         <div class="result-title-text">📊 Prediction Result</div>
@@ -1877,8 +1881,7 @@ with result_col:
                     <div class="summary-note-card" style="text-align: center; font-weight: 600;">
                         Correct the highlighted fields on the left and click Predict again.
                     </div>
-                    """,
-                    unsafe_allow_html=True
+                    """
                 )
             else:
                 # Run ML Pipeline
@@ -1969,7 +1972,7 @@ with result_col:
                         risk_label = "HIGHER"
                         risk_class = "risk-high"
 
-                    st.markdown(
+                    render_html(
                         f"""
                         <div class="result-header-box">
                             <div class="result-title-text">📊 Prediction Result</div>
@@ -1995,8 +1998,7 @@ with result_col:
                         <div class="summary-note-card">
                             The model predicts a <strong>favorable approval outcome</strong> based on submitted financial parameters and creditworthiness.
                         </div>
-                        """,
-                        unsafe_allow_html=True
+                        """
                     )
                 else:
                     rejection_index = list(model.classes_).index(0)
@@ -2012,7 +2014,7 @@ with result_col:
                         risk_label = "LOWER"
                         risk_class = "risk-low"
 
-                    st.markdown(
+                    render_html(
                         f"""
                         <div class="result-header-box">
                             <div class="result-title-text">📊 Prediction Result</div>
@@ -2038,13 +2040,12 @@ with result_col:
                         <div class="summary-note-card">
                             The model estimates a <strong>higher risk profile</strong> based on debt ratio, credit score, or collateral coverage.
                         </div>
-                        """,
-                        unsafe_allow_html=True
+                        """
                     )
 
                 # Collapsed Expander for Submitted Information
                 with st.expander("👁 View Submitted Information", expanded=False):
-                    st.markdown(
+                    render_html(
                         f"""
                         <div class="table-responsive-box">
                             <table class="adaptive-custom-table">
@@ -2057,7 +2058,6 @@ with result_col:
                                 <tbody>
                                     <tr><td>Applicant Income (Monthly)</td><td>₹{applicant_income:,.2f}</td></tr>
                                     <tr><td>Coapplicant Income (Monthly)</td><td>₹{coapplicant_income:,.2f}</td></tr>
-        
                                     <tr><td>DTI Ratio</td><td>{dti_ratio * 100:.1f}% ({dti_ratio:.2f})</td></tr>
                                     <tr><td>Age</td><td>{age} Years</td></tr>
                                     <tr><td>Credit Score</td><td>{credit_score:.0f}</td></tr>
@@ -2077,6 +2077,5 @@ with result_col:
                                 </tbody>
                             </table>
                         </div>
-                        """,
-                        unsafe_allow_html=True
+                        """
                     )
